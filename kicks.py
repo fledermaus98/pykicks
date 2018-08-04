@@ -40,7 +40,7 @@ def generate_random_combo(combo_length=3, stupid=False):
     else:
         techniques = KICKS
     while len(combo) < combo_length:
-        combo.append(random.choice(KICKS))
+        combo.append(random.choice(techniques))
     return ', '.join(combo)
 
 
