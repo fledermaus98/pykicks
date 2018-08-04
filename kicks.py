@@ -58,10 +58,7 @@ if __name__ == '__main__':
     )
     args = parser.parse_args()
     combo_length = args.length
-    if args.stupid:
-        stupid = True
-    else:
-        stupid = False
+    stupid = args.stupid
 
     result = generate_random_combo(combo_length, stupid)
     print(result)
