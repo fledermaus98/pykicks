@@ -29,12 +29,16 @@ KICKS = (
     'inside-out crescent',
     'outside-in crescent',
     'flying crescent',
-    'spin crescent',
+    'spin crescent'
 )
 
 
-def generate_random_combo(combo_length=3):
+def generate_random_combo(combo_length=3, stupid=False):
     combo = []
+    if stupid:
+        techniques = KICKS + ('headbutt',)
+    else:
+        techniques = KICKS
     while len(combo) < combo_length:
         combo.append(random.choice(KICKS))
     return ', '.join(combo)
@@ -48,8 +52,16 @@ if __name__ == '__main__':
         default=3,
         help='Length of the combination to generate.'
     )
+    parser.add_argument(
+        '--stupid',
+        action='store_true'
+    )
     args = parser.parse_args()
     combo_length = args.length
+    if args.stupid:
+        stupid = True
+    else:
+        stupid = False
 
-    result = generate_random_combo(combo_length)
+    result = generate_random_combo(combo_length, stupid)
     print(result)
