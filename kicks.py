@@ -33,14 +33,10 @@ KICKS = (
 )
 
 
-def generate_random_combo(combo_length=3, stupid=False):
+def generate_random_combo(combo_length=3):
     combo = []
-    if stupid:
-        techniques = KICKS + ('headbutt',)
-    else:
-        techniques = KICKS
     while len(combo) < combo_length:
-        combo.append(random.choice(techniques))
+        combo.append(random.choice(KICKS))
     return ', '.join(combo)
 
 
@@ -52,13 +48,8 @@ if __name__ == '__main__':
         default=3,
         help='Length of the combination to generate.'
     )
-    parser.add_argument(
-        '--stupid',
-        action='store_true'
-    )
     args = parser.parse_args()
     combo_length = args.length
-    stupid = args.stupid
 
-    result = generate_random_combo(combo_length, stupid)
+    result = generate_random_combo(combo_length)
     print(result)
